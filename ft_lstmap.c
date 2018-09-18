@@ -36,6 +36,7 @@ t_list	*ft_lstmap(t_list *lst, t_list *(*f)(t_list *))
 		new = f(new);
 		prev->next = new;
 		lst = lst->next;
+		prev = prev->next;
 	}
 	return (first);
 }
