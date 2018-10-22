@@ -1,5 +1,7 @@
 syntax on
-hi colorcolumn ctermbg=cyan ctermfg=lightgrey
+hi Overlenght ctermbg=red ctermfg=yellow guibg=#592929
+match Overlenght /\%81v.\+/
+hi colorcolumn ctermfg=yellow ctermbg=red
 hi Normal ctermbg=black ctermfg=lightgrey
 set wildmenu
 set nu
