@@ -1,36 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strsub.c                                        :+:      :+:    :+:   */
+/*   ft_tabdup.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: radler <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/11/15 15:24:32 by radler            #+#    #+#             */
-/*   Updated: 2017/12/01 16:58:04 by radler           ###   ########.fr       */
+/*   Created: 2019/01/30 18:41:32 by radler            #+#    #+#             */
+/*   Updated: 2019/01/30 18:43:33 by radler           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strsub(const char *s, unsigned int start, size_t len)
+char	**ft_tabdup(char **tab)
 {
-	char	*scpy;
 	int		i;
+	char	**cpy;
 
 	i = 0;
-	scpy = NULL;
-	if (!s || start + len > ft_strlen(s))
+	if (!tab)
 		return (NULL);
-	if (!len)
-		return (ft_strnew(0));
-	if (!(scpy = (char *)malloc(sizeof(char) * len + 1)))
-		return (NULL);
-	while (len--)
+	cpy = (char **)malloc(sizeof(char *) * (ft_tablen(tab) + 1));
+	while (tab[i])
 	{
-		scpy[i] = s[start];
+		cpy[i] = ft_strdup(tab[i]);
 		i++;
-		start++;
 	}
-	scpy[i] = '\0';
-	return (scpy);
+	cpy[i] = NULL;
+	return (cpy);
 }

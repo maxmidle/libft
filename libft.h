@@ -6,7 +6,7 @@
 /*   By: radler <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/14 15:26:26 by radler            #+#    #+#             */
-/*   Updated: 2018/06/13 17:44:57 by radler           ###   ########.fr       */
+/*   Updated: 2019/01/30 18:42:34 by radler           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,9 @@
 # include "libft_struct.h"
 
 char	*ft_strnconc(char **s1, size_t ls1, char *s2, size_t ls2);
+void	ft_strbackconc(char **s1, char *s2);
 void	ft_strconc(char **s1, char *s2);
+void	ft_strins(char **dest, char *instr, size_t i);
 void	ft_swap(char *a, char *b);
 void	*ft_memset(void *b, int c, size_t len);
 void	ft_bzero(void *s, size_t n);
@@ -30,12 +32,13 @@ int		ft_memcmp(const void *s1, const void *s2, size_t n);
 size_t	ft_strlen(const char *s);
 size_t	ft_strlcat(char *dest, const char *src, size_t size);
 char	*ft_upcase(char *str);
-char 	*ft_strrev(char *str);
+char	*ft_strrev(char *str);
 char	*ft_strplc(char *str, char a, char b);
 char	*ft_strdup(const char *s);
 char	*ft_strndup(const char *s, size_t len);
 char	*ft_strcdup(const char *s, char c);
 char	*ft_strcpy(char *dest, const char *src);
+char	*ft_strccpy(char *dest, char *src, char c);
 char	*ft_strncpy(char *dest, const char *src, size_t n);
 char	*ft_strcat(char *dest, const char *src);
 char	*ft_strncat(char *dest, const char *src, size_t n);
@@ -43,6 +46,7 @@ char	*ft_strchr(const char *s, int c);
 char	*ft_strrchr(const char *s, int c);
 char	*ft_strstr(const char *haystack, const char *needle);
 char	*ft_strnstr(const char *haystack, const char *needle, size_t len);
+int		ft_strccmp(char *s1, char *s2, char c);
 int		ft_strcmp(const char *s1, const char *s2);
 int		ft_strncmp(const char *s1, const char *s2, size_t n);
 int		ft_atoi(const char *str);
@@ -54,6 +58,9 @@ int		ft_isprint(int c);
 int		ft_toupper(int c);
 int		ft_tolower(int c);
 int		ft_issep(char c);
+char	**ft_tabdup(char **tab);
+int		ft_tablen(char **str);
+void	ft_freetab(char **str);
 void	*ft_memalloc(size_t size);
 void	ft_memdel(void **ap);
 char	*ft_strnew(size_t size);

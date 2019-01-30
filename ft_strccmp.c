@@ -1,36 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strsub.c                                        :+:      :+:    :+:   */
+/*   ft_strccmp.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: radler <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/11/15 15:24:32 by radler            #+#    #+#             */
-/*   Updated: 2017/12/01 16:58:04 by radler           ###   ########.fr       */
+/*   Created: 2019/01/30 18:40:21 by radler            #+#    #+#             */
+/*   Updated: 2019/01/30 18:40:42 by radler           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
-
-char	*ft_strsub(const char *s, unsigned int start, size_t len)
+int	ft_strccmp(char *s1, char *s2, char c)
 {
-	char	*scpy;
-	int		i;
+	int i;
 
 	i = 0;
-	scpy = NULL;
-	if (!s || start + len > ft_strlen(s))
-		return (NULL);
-	if (!len)
-		return (ft_strnew(0));
-	if (!(scpy = (char *)malloc(sizeof(char) * len + 1)))
-		return (NULL);
-	while (len--)
+	if (!s1 || !s2)
+		return (-2048);
+	while ((s1[i] || s2[i]) && s1[i] != c && s2[i] != c)
 	{
-		scpy[i] = s[start];
+		if (s1[i] != s2[i])
+			return (s1[i] - s2[i]);
 		i++;
-		start++;
 	}
-	scpy[i] = '\0';
-	return (scpy);
+	return (s1[i] - s2[i]);
 }

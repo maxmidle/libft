@@ -1,36 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strsub.c                                        :+:      :+:    :+:   */
+/*   ft_strins.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: radler <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/11/15 15:24:32 by radler            #+#    #+#             */
-/*   Updated: 2017/12/01 16:58:04 by radler           ###   ########.fr       */
+/*   Created: 2019/01/30 18:41:19 by radler            #+#    #+#             */
+/*   Updated: 2019/01/30 18:41:24 by radler           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strsub(const char *s, unsigned int start, size_t len)
+void	ft_strins(char **dest, char *instr, size_t i)
 {
-	char	*scpy;
-	int		i;
+	char *tmp;
 
-	i = 0;
-	scpy = NULL;
-	if (!s || start + len > ft_strlen(s))
-		return (NULL);
-	if (!len)
-		return (ft_strnew(0));
-	if (!(scpy = (char *)malloc(sizeof(char) * len + 1)))
-		return (NULL);
-	while (len--)
+	tmp = NULL;
+	if (i >= ft_strlen(*dest))
+		ft_strconc(dest, instr);
+	else
 	{
-		scpy[i] = s[start];
-		i++;
-		start++;
+		tmp = ft_strsub(*dest, 0, i);
+		if (tmp)
+		{
+			ft_strconc(&tmp, instr);
+			ft_strconc(&tmp, &dest[0][i]);
+		}
+		free(*dest);
+		*dest = tmp;
 	}
-	scpy[i] = '\0';
-	return (scpy);
 }
