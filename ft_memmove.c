@@ -6,7 +6,7 @@
 /*   By: radler <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/14 16:51:45 by radler            #+#    #+#             */
-/*   Updated: 2017/11/17 20:11:49 by radler           ###   ########.fr       */
+/*   Updated: 2019/04/22 16:28:42 by radler           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,18 @@
 
 void	*ft_memmove(void *dst, const void *src, size_t len)
 {
-	char tmp[len];
+	char	*charsrc;
+	char	*chardst;
+	size_t	i;
 
-	if (len >= 128 * 1024 * 1024)
-		return (NULL);
-	ft_memcpy(tmp, src, len);
-	ft_memcpy(dst, tmp, len);
+	i = -1;
+	charsrc = (char *)src;
+	chardst = (char *)dst;
+	if (charsrc < chardst)
+		while ((int)(--len) >= 0)
+			*(chardst + len) = *(charsrc + len);
+	else
+		while (++i < len)
+			*(chardst + i) = *(charsrc + i);
 	return (dst);
 }

@@ -6,7 +6,7 @@
 /*   By: radler <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/15 17:01:09 by radler            #+#    #+#             */
-/*   Updated: 2018/03/15 17:01:09 by radler           ###   ########.fr       */
+/*   Updated: 2019/04/22 16:31:30 by radler           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,8 @@
 
 void	ft_lstiter(t_list *lst, void (*f)(t_list *elem))
 {
+	if (!lst || !f)
+		return ;
 	f(lst);
 	if (lst->next)
 		ft_lstiter(lst->next, f);
